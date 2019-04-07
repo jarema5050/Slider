@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Hello, world!</title>
+  </head>
+  	<script>
+$(document).ready(function(){
+	var slide=1;
+	var slidesTotal=function(){	
+		var s=1;
+		while($("#"+(s+1).toString()).length!=0)
+			{	
+				s++;
+			}
+		return s;
+	};
+	var dotsCreator=function(){
+		var dots="";
+		for(var i=1;i<=slidesTotal();i++)
+		{
+			dots=dots+'<i class="fas fa-circle'+' dot'+i.toString()+'"></i>';
+		}
+		$(".dots").html(dots);
+	}
+	dotsCreator();
+  $("#right").click(function(){
+	if(slide<=slidesTotal())
+	{
+		
+		if(slide==slidesTotal())
+		{
+				for(slide;slide>=1;slide--)
+				{
+					$("#"+slide.toString()).css("margin-left","0px");
+				}
+			slide++;
+		}
+		else
+		{
+			$("#"+slide.toString()).animate({"margin-left":"-640px"});
+			slide++;
+		}
+	}
+	console.log(slide);
+  });
+ $("#left").click(function(){
+	if(slide==1)
+	{
+		for(slide;slide<slidesTotal();slide++)
+			{
+				$("#"+slide.toString()).css("margin-left","-640px");
+			}
+	}
+	else
+	{
+		slide--;
+		$("#"+slide.toString()).animate({"margin-left":"0px"});
+	}
+	console.log(slide);
+  });
+    $(".dot1").click(function(){
+	if(slide>1)
+	{
+		for(slide;slide>=1;slide--)
+			$("#"+(slide).toString()).animate({"margin-left":"0px"});
+		slide++;
+	}
+	console.log(slide);
+  });
+  $(".dot2").click(function(){
+	if(slide>2)
+	{
+		for(slide;slide>=2;slide--)
+			$("#"+(slide).toString()).animate({"margin-left":"0px"});
+		slide++;
+	}
+	
+	if(slide<2)
+	{
+		for(slide;slide<2;slide++)
+			$("#"+(slide).toString()).animate({"margin-left":"-640px"});
+	}
+	console.log(slide);
+  });
+   $(".dot3").click(function(){
+	if(slide>3)
+	{
+		for(slide;slide>=3;slide--)
+			$("#"+(slide).toString()).animate({"margin-left":"0px"});
+		slide++;
+	}
+	
+	if(slide<3)
+	{
+		for(slide;slide<3;slide++)
+			$("#"+(slide).toString()).animate({"margin-left":"-640px"});
+	}
+	console.log(slide);
+  });
+ $(".dot4").click(function(){
+ if(slide<4)
+	{
+		for(slide;slide<4;slide++)
+			$("#"+(slide).toString()).animate({"margin-left":"-640px"});
+	}
+	console.log(slide);
+  });
+});
+
+	</script>
+  <body>
+    <style>
+		#slider{
+		width:640px;
+		height:426px;
+		overflow:hidden;
+		}
+		#slider .slides
+		{
+		display:block;
+		width:1278px;
+		height:426px;
+		margin:0;
+		padding:0;
+		}
+		#slider .slide
+		{
+		float:left;
+		list-style-type:none;
+		width:640px;	
+		height:426px;
+		}
+		#right
+		{
+			font-size:5em;
+			opacity:0.6;
+		}
+		#left
+		{
+			font-size:5em;
+			opacity:0.6;
+		}
+		.fa-circle{
+		margin-left:20px;
+		opacity:0.5;
+		}
+	</style>
+	<div id="slider">
+	<ul class="slides">
+		<li class="slide" id="1"><img src="1.jpg"/></li>
+		<li class="slide" id="2"><img src="2.jpg"/></li>
+		<li class="slide" id="3"><img src="3.jpg"/></li>
+		<li class="slide" id="4"><img src="1.jpg"/></li>
+	</ul>
+	</div>
+	<i class="fas fa-angle-left" id="left"></i>
+	<div class="dots"></div>
+	<i class="fas fa-angle-right" id="right"></i>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	
+
+  </body>
+</html>
